@@ -20,6 +20,12 @@ body{ background:#fff;}
   justify-content: center;
   align-items: center;
 }
+
+  a{text-decoration: none;}
+  img{max-width: 100%; height: auto;}
+  .weixin-tip{display: none; position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100;}
+  .weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}
+
 </style>
 </head>
 <body>
@@ -30,5 +36,36 @@ body{ background:#fff;}
   <div id="box">
     <a href="./gk.apk" style="margin-top: 40%;font-size: 20px;" target="_parent">点击下载</a>
   </div>
+
+  <div class="weixin-tip">
+    <p>
+      <img src="live_weixin.png" alt="微信打开"/>
+    </p>
+  </div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript">
+        $(window).on("load",function(){
+          var winHeight = $(window).height();
+      function is_weixin() {
+          var ua = navigator.userAgent.toLowerCase();
+          if (ua.match(/MicroMessenger/i) == "micromessenger") {
+              return true;
+          } else {
+              return false;
+          }
+      }
+      var isWeixin = is_weixin();
+      if(isWeixin){
+        $(".weixin-tip").css("height",winHeight);
+              $(".weixin-tip").show();
+      }
+        })
+  </script>
+
+
 </body>
+<script type="text/javascript">
+  var isWeixinBrowser = (/micromessenger/i).test(navigator.userAgent);
+
+</script>
 </html>
